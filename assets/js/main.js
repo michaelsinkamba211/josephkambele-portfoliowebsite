@@ -288,3 +288,72 @@ function submitForm(){
   new PureCounter();
 
 })()
+
+
+
+// email js
+
+const contactForm = document.querySelector("#contact-form");
+const submitBtn = document.querySelector(".submit-btn");
+const nameInput = document.querySelector("#user_name");
+const emailInput = document.querySelector("#user_email");
+const subjectInput = document.querySelector("#subject");
+const messageInput = document.querySelector("#message");
+
+
+
+
+// get needed data from EmailJS
+const publicKey = "WubvjL_oM6fI2e3yx";
+const serviceID =  "service_ss1fufl";
+const templateID = "template_c8idzek";
+
+// initialize EmailJS with your credentials
+emailjs.init(publicKey);
+
+contactForm.addEventListener("submit", function (e) {
+
+
+  console.log(nameInput.innerHTML)
+  console.log(emailInput)
+  console.log(subjectInput)
+  console.log(messageInput)
+    e.preventDefault();
+
+    submitBtn.innerText = "Just A Moment...";
+
+    const templateParams = {
+        name: nameInput.value,
+        email: emailInput.value,
+        subject: subjectInput.value, // Include subject from the form
+        message: messageInput.value
+    };
+
+    emailjs.send(serviceID, templateID, templateParams)
+        .then(function (response) {
+            console.log('SUCCESS!', response.status, response.text);
+            submitBtn.innerText = "Your message has been sent. Thank you!";
+            contactForm.reset();
+            setTimeout(() => {
+                submitBtn.innerText = "Send Message";
+            }, 2000);
+        }, function (error) {
+            console.log('FAILED...', error);
+            submitBtn.innerText = "Something went wrong";
+            setTimeout(() => {
+                submitBtn.innerText = "Send Message";
+            }, 2000);
+        });
+});
+
+function validateForm() {
+    var name = document.getElementById("user_name").value;
+    var email = document.getElementById("user_email").value;
+
+    if (name === "" || email === "") {
+        alert("Name and email are required fields.");
+        return false;
+    }
+
+    return true;
+}

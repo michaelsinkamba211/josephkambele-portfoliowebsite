@@ -1,8 +1,5 @@
 <?php
  
-
-
-  
   $receiving_email_address = 'kambelejoseph8@gmail.com';
 
   if( file_exists($php_email_form = './assets/vendor/php-email-form/contact.php' )) {
