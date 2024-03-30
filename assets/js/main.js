@@ -295,7 +295,7 @@ function submitForm(){
 
 const contactForm = document.querySelector("#contact-form");
 const submitBtn = document.querySelector(".submit-btn");
-const nameInput = document.querySelector("#user_name");
+const nameInput = document.querySelector("#user_names");
 const emailInput = document.querySelector("#user_email");
 const subjectInput = document.querySelector("#subject");
 const messageInput = document.querySelector("#message");
@@ -303,10 +303,16 @@ const messageInput = document.querySelector("#message");
 
 
 
+
+
 // get needed data from EmailJS
-const publicKey = "WubvjL_oM6fI2e3yx";
-const serviceID =  "service_ss1fufl";
-const templateID = "template_c8idzek";
+const publicKey = "Up93rnqZSANCdq0Nh";
+// public key api Up93rnqZSANCdq0Nh
+const serviceID =  "service_xtq4i7d";
+// service service_xtq4i7d
+const templateID = "template_tkcstxd";
+
+// template id template_tkcstxd
 
 // initialize EmailJS with your credentials
 emailjs.init(publicKey);
@@ -314,10 +320,14 @@ emailjs.init(publicKey);
 contactForm.addEventListener("submit", function (e) {
 
 
-  console.log(nameInput.innerHTML)
-  console.log(emailInput)
-  console.log(subjectInput)
-  console.log(messageInput)
+  // testing emailJS sending of messages
+
+  // console.log(nameInput.value)
+  // console.log(emailInput.value)
+  // console.log(subjectInput.value)
+  // console.log(messageInput.value)
+
+
     e.preventDefault();
 
     submitBtn.innerText = "Just A Moment...";
@@ -331,7 +341,7 @@ contactForm.addEventListener("submit", function (e) {
 
     emailjs.send(serviceID, templateID, templateParams)
         .then(function (response) {
-            console.log('SUCCESS!', response.status, response.text);
+            // console.log('SUCCESS!', response.status, response.text);
             submitBtn.innerText = "Your message has been sent. Thank you!";
             contactForm.reset();
             setTimeout(() => {
@@ -347,7 +357,7 @@ contactForm.addEventListener("submit", function (e) {
 });
 
 function validateForm() {
-    var name = document.getElementById("user_name").value;
+    var name = document.getElementById("user_names").value;
     var email = document.getElementById("user_email").value;
 
     if (name === "" || email === "") {
