@@ -12,6 +12,8 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #272829;
+  opacity: 0.1 !important;
+  color: #ffffff2f !important;
 }
 
 a {
